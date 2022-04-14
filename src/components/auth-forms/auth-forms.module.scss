@@ -1,0 +1,148 @@
+@import '../../styles/variables';
+
+.form {
+  margin-top: 60px;
+  margin-bottom: 10px;
+  width: 384px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background: $background-color-base;
+  border: 1px solid #d9d9d9;
+  box-shadow: 0px 22px 106px rgba(0, 0, 0, 0.07), 0px 9.19107px 44.2843px rgba(0, 0, 0, 0.0503198),
+    0px 4.91399px 23.6765px rgba(0, 0, 0, 0.0417275), 0px 2.75474px 13.2728px rgba(0, 0, 0, 0.035),
+    0px 1.46302px 7.04911px rgba(0, 0, 0, 0.0282725), 0px 0.608796px 2.93329px rgba(0, 0, 0, 0.0196802);
+  border-radius: 6px;
+  padding: 48px 32px;
+  color: #262626;
+
+  &Title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+
+    margin-bottom: 20px;
+  }
+
+  & label {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+
+    margin-bottom: 12px;
+  }
+
+  &InputText {
+    margin-top: 2px;
+    background: $background-color-base;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 320px;
+    height: 40px;
+    transition: color 0.3s, border-color 0.3s;
+    padding: 0 12px;
+
+    &::placeholder {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: #bfbfbf;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      padding: 0 11px;
+      border-width: 2px;
+      border-color: $primary-color;
+    }
+
+    &Error {
+      border-color: $error-color;
+    }
+  }
+
+  &Error {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: $error-color;
+    margin-top: -12px;
+    margin-bottom: 12px;
+  }
+
+  &Checkbox {
+    margin-top: 8px;
+    border-top: 1px solid #e8e8e8;
+    padding-top: 11px;
+    display: flex;
+    cursor: pointer;
+
+    &Input {
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+      margin-top: 2px;
+      cursor: pointer;
+    }
+
+    &Text {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      color: #595959;
+    }
+  }
+
+  &Button {
+    background: $primary-color;
+    border-radius: 4px;
+    color: white;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 8px 0;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      background-color: #1846ff;
+    }
+  }
+
+  &Footer {
+    text-align: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #8c8c8c;
+
+    &Link {
+      margin-left: 5px;
+      color: $primary-color;
+    }
+  }
+}

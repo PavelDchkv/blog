@@ -1,0 +1,63 @@
+@import 'src/styles/variables';
+
+.articleBody {
+  width: 100%;
+
+  font-size: 20px;
+  line-height: 28px;
+  color: $text-color;
+  margin-top: 25px;
+}
+
+.userInfo {
+  width: 170px;
+  display: flex;
+  flex-direction: column;
+}
+
+.btnsWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+.buttonDel,
+.buttonEdit {
+  padding: 6px 17px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  border: 1px solid $success-color;
+  border-radius: 5px;
+  background-color: inherit;
+  transition: 0.3s;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.buttonDel {
+  cursor: pointer;
+  border-color: $error-color;
+  color: $error-color;
+  margin-right: 12px;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: $error-color;
+    border-color: $error-color;
+  }
+}
+
+.buttonEdit {
+  color: $success-color;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: $success-color;
+    border-color: $success-color;
+  }
+}

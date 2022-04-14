@@ -1,0 +1,36 @@
+.list {
+  margin-bottom: 27px;
+}
+
+.paginationWrapper {
+  margin-bottom: 20px;
+
+  & :global .ant-pagination-next .ant-pagination-item-link,
+  :global .ant-pagination-prev .ant-pagination-item-link {
+    border: none;
+    background-color: inherit;
+  }
+
+  & :global .ant-pagination-item {
+    border: none;
+    min-width: 22px;
+    height: 22px;
+    line-height: 22px;
+    background-color: inherit;
+  }
+
+  & :global .ant-pagination-item-active {
+    background-color: #1890ff;
+    border-radius: 4px;
+  }
+
+  & :global .ant-pagination-item-active:focus-visible a,
+  :global .ant-pagination-item-active:hover a,
+  :global .ant-pagination-item-active a {
+    color: white;
+  }
+
+  & :global .ant-pagination {
+    font-size: 12px;
+  }
+}

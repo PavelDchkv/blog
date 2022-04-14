@@ -1,0 +1,116 @@
+@import 'src/styles/variables';
+
+.article {
+  width: 941px;
+  background: $background-color-base;
+  border-radius: 5px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 15px 15px 25px 20px;
+
+  margin-top: 26px;
+}
+
+.content {
+  max-width: 700px;
+  font-style: normal;
+  font-weight: 400;
+
+  &TopLine {
+    display: flex;
+    align-items: center;
+  }
+
+  &Title {
+    font-size: 20px;
+    line-height: 28px;
+    color: $primary-color;
+    max-width: 500px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &LikeBtn {
+    display: flex;
+    align-items: center;
+    margin-left: 13px;
+    margin-right: 5px;
+    background-color: inherit;
+    cursor: pointer;
+    height: 28px;
+  }
+
+  &Like {
+  }
+
+  &LikeCount {
+    font-size: 12px;
+    line-height: 22px;
+  }
+
+  &Tag {
+    font-size: 12px;
+    line-height: 15px;
+    color: $text-color-secondary;
+    border: 1px solid $text-color-secondary;
+    border-radius: 2px;
+    padding: 2px 5px 3px;
+    margin-top: 4px;
+    margin-right: 8px;
+
+    &:first-child {
+      color: $text-color;
+      border-color: $text-color;
+    }
+  }
+
+  &TagsList {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 700px;
+    min-height: 20px;
+  }
+
+  &Description {
+    margin-top: 5px;
+    font-size: 12px;
+    line-height: 22px;
+  }
+}
+
+.infoWrapper {
+  width: 170px;
+  display: flex;
+}
+
+.info {
+  margin-right: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  width: calc(100% - 60px);
+
+  &Name {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  &Date {
+    display: block;
+    font-size: 12px;
+    line-height: 22px;
+    color: $text-color-secondary;
+  }
+}
+
+.avatar {
+  width: 46px;
+  height: 46px;
+}
