@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { Popconfirm, message } from 'antd';
 
 import Spinner from '../spinner';
-import { getArticleBySlug, deleteArticle } from '../../services/realworld-api';
+import { getArticleBySlug, deleteArticle, likeArticle } from '../../services/realworld-api';
 import classes from '../article/article.module.scss';
 import logo from '../../img/logo.svg';
 import like from '../../img/like.svg';
@@ -17,25 +17,27 @@ import newClasses from './artical-page.module.scss';
 export const ArticlePage = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const [isLoading, setLoading] = useState(true);
-  const [article, setArticle] = useState();
+
+  const [articleState, setArticleState] = useState({ article: {}, isLoading: true });
+
+  const [favoriteState, setFavoriteState] = useState({ isFavorited: false, countLikes: 0 });
 
   const user = useSelector((state) => state.currentUser);
   const isCheckingUser = useSelector((state) => state.isCheckingUser);
 
   useEffect(() => {
     if (!isCheckingUser) {
-      setLoading(true);
+      setArticleState({ article: articleState.article, isLoading: true });
       getArticleBySlug(slug, user?.token).then((currentArticle) => {
-        setArticle(currentArticle);
-        setLoading(false);
+        setArticleState({ article: currentArticle, isLoading: false });
+        setFavoriteState({ isFavorited: currentArticle.favorited, countLikes: currentArticle.favoritesCount });
       });
     }
   }, [user, isCheckingUser]);
 
-  if (isLoading || isCheckingUser) return <Spinner />;
+  if (articleState.isLoading) return <Spinner />; // || isCheckingUser
 
-  const { title, tagList, description, author, createdAt, favoritesCount, body, favorited } = article;
+  const { title, tagList, description, author, createdAt, body } = articleState.article;
 
   const tagsList = tagList.map((tag, index) => {
     return (
@@ -55,15 +57,26 @@ export const ArticlePage = () => {
     });
   };
 
+  const onLike = () => {
+    if (!user) return;
+    const method = favoriteState.isFavorited ? 'DELETE' : 'POST';
+    likeArticle(slug, user?.token, method).then(() => {
+      setFavoriteState((prev) => ({
+        countLikes: prev.isFavorited ? prev.countLikes - 1 : prev.countLikes + 1,
+        isFavorited: !prev.isFavorited,
+      }));
+    });
+  };
+
   return (
     <article className={classes.article}>
       <section className={classes.content}>
         <div className={classes.contentTopLine}>
           <div className={classes.contentTitle}>{title}</div>
-          <button className={classes.contentLikeBtn} type="button">
-            <img src={favorited ? likeActive : like} alt="like" className={classes.contentLike} />
+          <button className={classes.contentLikeBtn} type="button" onClick={onLike}>
+            <img src={favoriteState.isFavorited ? likeActive : like} alt="like" className={classes.contentLike} />
           </button>
-          <span className={classes.contentLikeCount}>{favoritesCount}</span>
+          <span className={classes.contentLikeCount}>{favoriteState.countLikes}</span>
         </div>
         <ul className={classes.contentTagsList}>{tagsList}</ul>
         <p className={classes.contentDescription}>{description}</p>
@@ -83,7 +96,6 @@ export const ArticlePage = () => {
               okText="Yes"
               cancelText="No"
               onConfirm={onDelete}
-              onCancel={() => message.error('Error')}
               className={newClasses.buttonDel}
             >
               Delete

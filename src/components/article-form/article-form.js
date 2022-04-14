@@ -24,13 +24,14 @@ export const ArticleForm = () => {
   });
 
   const user = useSelector((state) => state.currentUser);
+  const isCheckingUser = useSelector((state) => state.isCheckingUser);
   const navigate = useNavigate();
   const { slug } = useParams();
 
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (slug) {
+    if (!isCheckingUser && slug) {
       setLoading(true);
       getArticleBySlug(slug, user?.token).then((currentArticle) => {
         if (currentArticle.author.username !== user.username) navigate('/', { replace: true });
@@ -43,9 +44,9 @@ export const ArticleForm = () => {
         setLoading(false);
       });
     }
-  }, []);
+  }, [isCheckingUser]);
 
-  if (isLoading) return <Spinner />;
+  if (isLoading || isCheckingUser) return <Spinner />;
 
   const tagsArr = fields.map((field, index) => (
     <div className={classes.tag} key={field.id}>
