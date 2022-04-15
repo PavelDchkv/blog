@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux';
 import Layout from '../layout';
 import ArticlesList from '../articles-list';
 import ArticlePage from '../article-page';
-import ArticleForm from '../article-form';
+import EditArticle from '../../pages/edit-article';
+import CreateArticle from '../../pages/create-article';
 import SignUp from '../auth-forms/sign-up';
 import SignIn from '../auth-forms/sign-in';
 import EditProfile from '../auth-forms/edit-profile';
@@ -30,8 +31,8 @@ const App = () => {
           <Route path="sign-in" element={<SignIn />} />
           <Route path="sign-up" element={<SignUp />} />
           <Route path="profile" element={<EditProfile />} />
-          <Route path="new-article" element={<ArticleForm />} />
-          <Route path="articles/:slug/edit" element={<ArticleForm />} />
+          <Route path="new-article" element={<CreateArticle />} />
+          <Route path="articles/:slug/edit" element={<EditArticle />} />
         </Route>
       </Routes>
     </>

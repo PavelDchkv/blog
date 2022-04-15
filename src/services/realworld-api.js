@@ -24,9 +24,6 @@ export const registerUser = async (user) => {
       },
       body: JSON.stringify({ user }),
     });
-
-    if (!res.ok) throw new Error(`Something went wrong in registerUser(), received ${res.status}`);
-
     return await res.json();
   } catch (err) {
     console.log(err);

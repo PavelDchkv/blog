@@ -34,8 +34,8 @@ export const SignUp = () => {
         console.log(res.errors);
         return;
       }
+      navigate('/Sign-In', { replace: true });
     });
-    navigate('/Sign-In', { replace: true });
   };
 
   return (
